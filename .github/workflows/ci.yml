@@ -18,6 +18,7 @@ jobs:
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         BRANCH: master
+        BASE_BRANCH: source
         FOLDER: docs/.vuepress/dist
         BUILD_SCRIPT: npm install && npm run build && echo 'blog.kangyuantong.top' > CNAME
         
