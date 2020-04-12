@@ -20,5 +20,5 @@ jobs:
         BRANCH: master
         BASE_BRANCH: source
         FOLDER: docs/.vuepress/dist
-        BUILD_SCRIPT: yarn && yarn build && echo 'blog.kangyuantong.top' > CNAME
+        BUILD_SCRIPT: yarn && yarn build && echo 'blog.kangyuantong.top' > docs/.vuepress/dist/CNAME
         
