@@ -5,25 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "vuepress dev",
-    "build": "vuepress build"
+    "start": "vuepress dev docs",
+    "build": "vuepress build docs"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/im/vuepress-github-actions.git"
-  },
-  "keywords": [
-    "github pages",
-    "gh-pages",
-    "github actions"
-  ],
-  "author": "tangxiaomi",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/im/vuepress-github-actions/issues"
-  },
   "homepage": "https://github.com/im/vuepress-github-actions#readme",
   "devDependencies": {
-    "vuepress": "^1.1.0"
+    "vuepress": "^1.4.0"
+  },
+  "dependencies": {
+    "glob": "^7.1.6",
+    "vuepress-auto-sidebar": "^1.0.4"
   }
 }
