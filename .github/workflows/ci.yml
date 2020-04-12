@@ -11,7 +11,7 @@ jobs:
       uses: actions/checkout@master
     - run: |
         git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
-        git checkot source
+        git checkout source
 
     - name: Build and Deploy
       uses: JamesIves/github-pages-deploy-action@master
