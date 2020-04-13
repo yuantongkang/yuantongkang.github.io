@@ -5,7 +5,7 @@ module.exports = {
     themeConfig: {
         sidebar:{
             '/algorithm/': ['','link-has-loop'],
-            '/': ['algorithm']
+            '/': ['']
         },
         displayAllHeaders: true ,
     }
