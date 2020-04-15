@@ -12,14 +12,7 @@ jobs:
       uses: actions/checkout@master
     - uses: bahmutov/npm-install@v1
     - name: Build and Deploy
-      run: yarn && yarn build
-    - uses: actions/cache@v1
-      id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-      with:
-        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-yarn-  
+      run: yarn build
     - uses: manyuanrong/setup-ossutil@v1.0
       with:
         # endpoint 可以去oss控制台上查看
