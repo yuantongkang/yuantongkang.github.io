@@ -26,4 +26,12 @@ jobs:
         access-key-secret: ${{ secrets.ACCESS_KEY_SECRET }}
     - name: Deply To OSS
       run: ossutil cp docs/.vuepress/dist oss://blog-sonic/ -rf
-        
+    - run: |
+        curl 'https://oapi.dingtalk.com/robot/send?access_token=66eeb0aa0384e3fb6d237f26b8285f1c8e0812a256ad35ff5acc2da57e8632de' \
+           -H 'Content-Type: application/json' \
+           -d '{"msgtype": "text",
+                "text": {
+                     "content": "博客更新了"
+                }
+          }'
+
