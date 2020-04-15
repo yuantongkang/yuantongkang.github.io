@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>判断链表是否有环 | 个人主页</title>
+    <meta name="description" content="Sonic&#39;s Blog">
+    <meta name="generator" content="VuePress 1.4.0">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.4e2df076.css" as="style"><link rel="preload" href="/assets/js/app.59065808.js" as="script"><link rel="preload" href="/assets/js/2.dedf5837.js" as="script"><link rel="preload" href="/assets/js/6.b68e3b7c.js" as="script"><link rel="prefetch" href="/assets/js/3.09a6505e.js"><link rel="prefetch" href="/assets/js/4.e85d0862.js"><link rel="prefetch" href="/assets/js/5.0d6f1be0.js"><link rel="prefetch" href="/assets/js/7.2052a16f.js"><link rel="prefetch" href="/assets/js/8.ea815d07.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.4e2df076.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">个人主页</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><a href="/algorithm/" class="sidebar-link">算法学习</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/algorithm/#算法学习" class="sidebar-link">算法学习</a></li></ul></li><li><a href="/algorithm/link-has-loop.html" class="active sidebar-link">判断链表是否有环</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="判断链表是否有环"><a href="#判断链表是否有环" class="header-anchor">#</a> 判断链表是否有环</h1> <ul><li>快慢指针</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 快慢指针</span>
+<span class="token keyword">let</span> <span class="token function-variable function">hasCycle</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">head</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>head<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> walker <span class="token operator">=</span> head<span class="token punctuation">;</span>
+  <span class="token keyword">let</span> runner <span class="token operator">=</span> head<span class="token punctuation">;</span>
+
+  <span class="token keyword">while</span> <span class="token punctuation">(</span>walker<span class="token punctuation">.</span>next <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>runner<span class="token punctuation">.</span>next <span class="token operator">&amp;&amp;</span> runner<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>walker<span class="token punctuation">.</span>next <span class="token operator">==</span> runner<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    walker <span class="token operator">=</span> walker<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+    runner <span class="token operator">=</span> runner<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><ul><li>利用 HashSet</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">hasCycle</span><span class="token punctuation">(</span><span class="token parameter">head</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>head<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> linkLoop <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">let</span> walker <span class="token operator">=</span> head
+  <span class="token keyword">while</span><span class="token punctuation">(</span>walker<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>linkLoop<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>walker<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+      linkLoop<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>walker<span class="token punctuation">)</span>
+      walker <span class="token operator">=</span> walker<span class="token punctuation">.</span>next
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token boolean">false</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/algorithm/" class="prev router-link-active">
+        算法学习
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.59065808.js" defer></script><script src="/assets/js/2.dedf5837.js" defer></script><script src="/assets/js/6.b68e3b7c.js" defer></script>
+  </body>
+</html>
